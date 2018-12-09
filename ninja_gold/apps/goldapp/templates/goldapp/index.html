@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <style>
+            .choice {
+                display:inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Your Gold: <span class='amount'>{{request.session.gold}}</span></p>
+        <div class="options">
+            <div class="choice">
+                <h3>Farm</h3>
+                <p>(earns 10-20 golds)</p>
+                <form action='process_gold' method="post">
+                    {% csrf_token %}
+                    <input type='hidden' value='farm' name="imin">
+                    <input type='submit' value='Find Gold!'>
+                </form>
+            </div>
+            <div class="choice">
+                <h3>Cave</h3>
+                <p>(earns 5-10 golds)</p>
+                <form action='process_gold' method="post">
+                    {% csrf_token %}
+                    <input type='hidden' value='cave' name="imin">
+                    <input type='submit' value='Find Gold!'>
+                </form>
+            </div>
+            <div class="choice">
+                <h3>House</h3>
+                <p>(earns 2-5 golds)</p>
+                <form action='process_gold' method="post">
+                    {% csrf_token %}
+                    <input type='hidden' value='house' name="imin">
+                    <input type='submit' value='Find Gold!'>
+                </form>
+            </div>
+            <div class="choice">
+                <h3>Casino</h3>
+                <p>(earns/takes 0-50 golds)</p>
+                <form action='process_gold' method="post">
+                    {% csrf_token %}
+                    <input type='hidden' value='casino' name="imin">
+                    <input type='submit' value='Find Gold!'>
+                </form>
+            </div>
+            </div>
+        </div>
+        <div class="activities">
+            <h3>Activities</h3>
+            <p>{{request.session.activities|linebreaks}}</p>
+        </div>
+    </body>
+</html>
